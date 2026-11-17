@@ -4,8 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.fulfilment.application.monolith.warehouses.domain.models.Warehouse;
+import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
+@QuarkusTest
 class ArchiveWarehouseUseCaseTest {
 
   @Test
