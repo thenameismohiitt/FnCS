@@ -82,6 +82,16 @@ Navigate to:
 
 Have fun, and join the team of contributors!
 
+### Environment Configuration
+
+Added separate datasource configurations for different environments:
+
+- **Development (`%dev`):** Used for local development and connects to the local PostgreSQL database.
+- **Testing (`%test`):** Used for automated tests and GitHub Actions CI/CD pipeline execution.
+- **Production (`%prod`):** Used for the production environment.
+
+This separation ensures environment-specific database configurations and prevents conflicts between local development and CI/CD execution.
+
 ## Troubleshooting
 
 Using **IntelliJ**, in case the generated code is not recognized and you have compilation failures, you may need to add `target/.../jaxrs` folder as "generated sources".
