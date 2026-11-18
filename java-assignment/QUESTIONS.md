@@ -28,25 +28,15 @@ clear, business-oriented validation messages before that point.
 
 **Answer:**
 ```txt
-OpenAPI-first development gives a versioned, reviewable contract, generated
-client/server interfaces, and consistent documentation. It is especially useful
-when other teams consume the API or when compatibility must be managed over
-time. Its costs are additional build tooling, generated-code conventions, and
-some friction when an endpoint needs a response shape or behaviour not expressed
-well in the specification.
+OpenAPI-first (Warehouse):
+Pros: Single source of truth for the contract; generated interfaces reduce drift; easier for consumers and contract tests; good when multiple teams touch the same API.
+Cons: Build-time codegen friction; generated code can be awkward to customize; exception handling and status codes must be wired carefully around generated stubs.
 
-Code-first endpoints are faster for a small internal service and keep routing,
-validation, and implementation close together. However, their documentation can
-drift and consumers have no contract to validate against unless an OpenAPI
-document is generated and published deliberately.
+Code-first (Product, Store):
+Pros: Fast to iterate inside one repo; fewer moving parts for simple CRUD; annotations live next to the implementation.
+Cons: Spec may lag or never exist; harder to guarantee compatibility for external clients; review diffs mix contract and implementation.
 
-I would use OpenAPI-first for externally consumed or stable domain APIs such as
-Warehouse, with the specification as the source of truth and contract tests in
-CI. For internal or rapidly changing endpoints, code-first is reasonable, but I
-would still generate and publish OpenAPI from annotations. The important choice
-is consistency: every exposed endpoint should have an accurate, tested API
-contract.
-
+My choice: OpenAPI-first for outward-facing or stable integration APIs (Warehouse, fulfillment if it grows), code-first only for internal/admin CRUD that is unlikely to be consumed externally. If the organization standardizes on API governance, I would migrate Product and Store to OpenAPI when their consumers multiply—not before.
 ```
 ----
 3. Given the need to balance thorough testing with time and resource constraints, how would you prioritize and implement tests for this project? Which types of tests would you focus on, and how would you ensure test coverage remains effective over time?
