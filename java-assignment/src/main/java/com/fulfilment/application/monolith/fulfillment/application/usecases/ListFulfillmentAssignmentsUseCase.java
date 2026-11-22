@@ -8,6 +8,10 @@ import java.util.List;
 
 @ApplicationScoped
 public class ListFulfillmentAssignmentsUseCase {
-  @Inject FulfillmentAssignmentStore assignmentStore;
+  private final FulfillmentAssignmentStore assignmentStore;
+  @Inject
+  public ListFulfillmentAssignmentsUseCase(FulfillmentAssignmentStore assignmentStore) {
+    this.assignmentStore = assignmentStore;
+  }
   public List<FulfillmentAssignment> list() { return assignmentStore.listAll(); }
 }

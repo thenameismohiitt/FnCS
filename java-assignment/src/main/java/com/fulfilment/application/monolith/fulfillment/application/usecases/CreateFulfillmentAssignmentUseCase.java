@@ -8,8 +8,15 @@ import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class CreateFulfillmentAssignmentUseCase {
-  @Inject FulfillmentAssignmentStore assignmentStore;
-  @Inject FulfillmentValidator validator;
+  private final FulfillmentAssignmentStore assignmentStore;
+  private final FulfillmentValidator validator;
+
+  @Inject
+  public CreateFulfillmentAssignmentUseCase(
+      FulfillmentAssignmentStore assignmentStore, FulfillmentValidator validator) {
+    this.assignmentStore = assignmentStore;
+    this.validator = validator;
+  }
 
   public FulfillmentAssignment create(FulfillmentAssignment assignment) {
     validator.validateForCreation(assignment);

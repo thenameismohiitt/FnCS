@@ -6,6 +6,10 @@ import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class DeleteFulfillmentAssignmentUseCase {
-  @Inject FulfillmentAssignmentStore assignmentStore;
+  private final FulfillmentAssignmentStore assignmentStore;
+  @Inject
+  public DeleteFulfillmentAssignmentUseCase(FulfillmentAssignmentStore assignmentStore) {
+    this.assignmentStore = assignmentStore;
+  }
   public boolean delete(Long id) { return assignmentStore.deleteById(id); }
 }

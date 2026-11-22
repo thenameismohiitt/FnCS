@@ -30,6 +30,26 @@ Execute the Maven build on the root of the project:
 ./mvnw package
 ```
 
+## Coverage reporting
+
+Run the verification build to execute tests, enforce above 80% line-coverage gate for the
+fulfilment domain and application layers, and generate coverage artifacts:
+
+```sh
+./mvnw verify
+```
+
+The human-readable report is written to `target/site/jacoco/index.html`; the machine-readable
+report for CI tracking is `target/site/jacoco/jacoco.xml`.
+
+### Local coverage-report demo
+
+The screenshot below is a local browser demo of `target/site/jacoco/index.html` after
+running `./mvnw verify`. It shows 100% line coverage and 93% branch coverage for the
+fulfilment domain and application layers.
+
+![Local JaCoCo fulfilment coverage-report demo](docs/images/fulfillment-coverage-report.png)
+
 ## Running the demo
 
 ### Live coding with Quarkus
